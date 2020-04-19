@@ -68,20 +68,6 @@ do_install() {
 
 	)
 	echo_docker_as_nonroot
-
-			
-
-	# intentionally mixed spaces and tabs here -- tabs are stripped by "<<-'EOF'", spaces are kept in the output
-	cat >&2 <<-'EOF'
-
-	Either your platform is not easily detectable or is not supported by this
-	installer script.
-	Please visit the following URL for more detailed installation instructions:
-
-	https://docs.docker.com/engine/installation/
-
-	EOF
-	exit 1
 }
 
 # wrapped up in a function so that we have some protection against only getting
