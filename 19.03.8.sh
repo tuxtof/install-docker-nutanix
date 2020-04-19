@@ -412,10 +412,10 @@ do_install() {
 				$sh_c "$pkg_manager makecache fast"
 				$sh_c "$pkg_manager install -y -q docker-ce-${docker_version}"
 				if [ -d '/run/systemd/system' ]; then
-					$sh_c 'service docker start'
-				else
 					$sh_c 'systemctl start docker'
 					$sh_c 'systemctl enable --now iscsid'
+				else
+					$sh_c 'service docker start'
 				fi
 			)
 			echo_docker_as_nonroot
