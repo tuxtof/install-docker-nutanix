@@ -389,12 +389,12 @@ do_install() {
 				pkg_manager="dnf"
 				config_manager="dnf config-manager"
 				enable_channel_flag="--set-enabled"
-				pre_reqs="dnf-plugins-core"
+				pre_reqs="dnf-plugins-core iscsi-initiator-utils"
 			else
 				pkg_manager="yum"
 				config_manager="yum-config-manager"
 				enable_channel_flag="--enable"
-				pre_reqs="yum-utils"
+				pre_reqs="yum-utils iscsi-initiator-utils"
 			fi
 			(
 				set -x
@@ -415,6 +415,7 @@ do_install() {
 					$sh_c 'service docker start'
 				else
 					$sh_c 'systemctl start docker'
+					$sh_c 'systemctl enable --now iscsid'
 				fi
 			)
 			echo_docker_as_nonroot
